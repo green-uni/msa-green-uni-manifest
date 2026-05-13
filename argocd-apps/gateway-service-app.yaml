@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gateway-service
+  name: gateway
   namespace: argocd
   annotations:
     # 1. 감시할 이미지 설정 (별칭:이미지경로)
-    argocd-image-updater.argoproj.io/image-list: gateway=harbor.greenart.n-e.kr/greenuni/gateway-service
+    argocd-image-updater.argoproj.io/image-list: gateway=harbor.greenart.n-e.kr/greenuni/gateway
 
     # 2. 업데이트 전략: 빌드 시간이 가장 최신인 이미지를 선택
     argocd-image-updater.argoproj.io/gateway.update-strategy: newest-build
@@ -17,7 +17,7 @@ spec:
   source:
     repoURL: https://github.com/green-uni/msa-green-uni-manifest.git
     targetRevision: main
-    path: ./charts/gateway-service # 실제 Helm 차트나 YAML이 있는 경로
+    path: ./charts/gateway # 실제 Helm 차트나 YAML이 있는 경로
   destination:
     server: https://kubernetes.default.svc
     namespace: app # 서비스가 실제로 돌아갈 네임스페이스
