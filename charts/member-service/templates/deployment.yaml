@@ -26,3 +26,10 @@ spec:
           env:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          volumeMounts:
+            - name: shared-download-storage
+              mountPath: /home/download
+      volumes:
+        - name: shared-download-storage
+          persistentVolumeClaim:
+            claimName: team-shared-pvc
