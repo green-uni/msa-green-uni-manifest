@@ -4,5 +4,5 @@ helm:
     value: harbor.greenart.n-e.kr/greenuni/core-service
     forcestring: true
   - name: image.tag
-    value: "38"
+    value: "40"
     forcestring: true
